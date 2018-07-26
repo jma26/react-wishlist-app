@@ -5,6 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      wishes: [],
       item: '',
       link: '',
       image: null
@@ -15,6 +16,18 @@ class App extends Component {
   handleSubmit(event) {
     alert('handleSubmit() called!');
     event.preventDefault();
+    let wish = {
+      item: this.state.item,
+      link: this.state.link,
+      image: this.state.image
+    }
+    this.setState({
+      wishes: [...this.state.wishes, wish],
+      item: '',
+      link: '',
+      image: null
+    });
+    event.target.reset();
   }
 
   handleChange(field, event) {
