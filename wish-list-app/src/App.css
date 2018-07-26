@@ -11,6 +11,7 @@
 
 header {
   background-color: #00796B;
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
   text-align: center;
 }
 
@@ -19,3 +20,43 @@ header {
   padding: 56px;
   font-size: 3rem;
 }
+
+form {
+  background-color: #00796B;
+  border: 2px solid #FFC107;
+  display: inline-block;
+  margin: 24px 0px 0px 24px;
+  padding: 16px;
+}
+
+fieldset {
+  border: none;
+  color: #B2DFD8;
+  font-size: 1.5rem;
+  margin: 8px 0px 8px 0px;
+}
+
+input {
+  float: right;
+  padding: 4px;
+}
+
+input[type="text"], input[type="file"] {
+  margin-left: 24px;
+  width: 175px;
+}
+
+input[type="submit"] {
+  background-color: #0097A7;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #00BCD4;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.2);
+}
+
