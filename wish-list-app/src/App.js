@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1> wish<span>Li</span>st </h1>
+          <h1 className="title"> wish<span>Li</span>st </h1>
         </header>
         <div className="main">
           <form onSubmit={this.handleSubmit} className="wishform">
