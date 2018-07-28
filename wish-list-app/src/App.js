@@ -3,8 +3,8 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       wishes: [],
       item: '',
@@ -18,21 +18,21 @@ class App extends Component {
     alert('handleSubmit() called!');
     event.preventDefault();
     
-    const data = new FormData();
-    data.append('item', this.state.item);
-    data.append('link', this.state.link);
-    data.append('image', this.state.image);
-
-    axios.post('https://localhost:8000/upload')
-    .then((res) => {
-      console.log(res);
-    });
-
+    let formData = new FormData();
+    formData.append('item', this.state.item);
+    formData.append('link', this.state.link);
+    formData.append('image', this.state.image);
+    
     let wish = {
       item: this.state.item,
       link: this.state.link,
       image: this.state.image
     }
+
+    axios.post('http://localhost:8000/upload', formData)
+    .then((res) => {
+      console.log(res);
+    });
 
     this.setState({
       wishes: [...this.state.wishes, wish],
@@ -50,9 +50,10 @@ class App extends Component {
     });
   }
 
-  imageUpload(event) {
+  imageUpload(fileList) {
+    console.log(fileList);
     this.setState({
-      image: this.imageUpload.files[0]
+      image: fileList[0]
     })
   }
 
@@ -74,7 +75,7 @@ class App extends Component {
             </fieldset>
             <fieldset className="image-field">
               <label type="image-upload" /> Image
-              <input type="file" id="image-upload" onChange={(event) => this.imageUpload(event)}/>
+              <input type="file" id="image-upload" onChange={(event) => this.imageUpload(event.target.files)}/>
             </fieldset>
             <input type="submit" value="Submit" />
           </form>
