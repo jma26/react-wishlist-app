@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +11,7 @@ class App extends Component {
       image: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileReader = new FileReader();
   }
 
   handleSubmit(event) {
@@ -29,11 +29,6 @@ class App extends Component {
       image: this.state.image
     }
 
-    axios.post('http://localhost:8000/upload', formData)
-    .then((res) => {
-      console.log(res);
-    });
-
     this.setState({
       wishes: [...this.state.wishes, wish],
       item: '',
@@ -50,11 +45,18 @@ class App extends Component {
     });
   }
 
-  imageUpload(fileList) {
-    console.log(fileList);
-    this.setState({
-      image: fileList[0]
-    })
+  imageUpload(files) {
+    console.log(files);
+    if (files) {
+      let imageFile = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.setState({
+          image: reader.result,
+        })
+      }
+      reader.readAsDataURL(imageFile);
+    }
   }
 
   render() {
@@ -80,6 +82,7 @@ class App extends Component {
             <input type="submit" value="Submit" />
           </form>
           <div className="list">
+            <img src={this.state.image} alt="Testing" />
           </div>
         </div>
       </div>
