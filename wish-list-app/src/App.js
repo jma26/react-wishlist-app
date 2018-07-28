@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -21,6 +22,11 @@ class App extends Component {
     data.append('item', this.state.item);
     data.append('link', this.state.link);
     data.append('image', this.state.image);
+
+    axios.post('https://localhost:8000/upload')
+    .then((res) => {
+      console.log(res);
+    });
 
     let wish = {
       item: this.state.item,
