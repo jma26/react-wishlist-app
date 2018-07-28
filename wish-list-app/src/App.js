@@ -16,11 +16,18 @@ class App extends Component {
   handleSubmit(event) {
     alert('handleSubmit() called!');
     event.preventDefault();
+    
+    const data = new FormData();
+    data.append('item', this.state.item);
+    data.append('link', this.state.link);
+    data.append('image', this.state.image);
+
     let wish = {
       item: this.state.item,
       link: this.state.link,
       image: this.state.image
     }
+
     this.setState({
       wishes: [...this.state.wishes, wish],
       item: '',
