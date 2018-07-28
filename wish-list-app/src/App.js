@@ -37,6 +37,12 @@ class App extends Component {
     });
   }
 
+  imageUpload(event) {
+    this.setState({
+      image: this.imageUpload.files[0]
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -55,7 +61,7 @@ class App extends Component {
             </fieldset>
             <fieldset className="image-field">
               <label type="image-upload" /> Image
-              <input type="file" id="image-upload" onChange={(event) => this.handleChange("image", event)}/>
+              <input type="file" id="image-upload" onChange={(event) => this.imageUpload(event)}/>
             </fieldset>
             <input type="submit" value="Submit" />
           </form>
