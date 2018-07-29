@@ -27,13 +27,12 @@ class App extends Component {
           imageFiles.push(wish.image);
         })
       }
-      // Map through the array and run it through reader
-      imageFiles.map((imageFile) => reader.readAsDataURL(imageFile));
+      // Have each imageFile run through reader
+      imageFiles.forEach((imageFile) => reader.readAsDataURL(imageFile));
     }
   }
 
   handleSubmit(event) {
-    alert('handleSubmit() called!');
     event.preventDefault();
     
     let formData = new FormData();
@@ -58,7 +57,6 @@ class App extends Component {
   }
 
   handleChange(field, event) {
-    console.log(field);
     this.setState({
       [field]: event.target.value
     });
@@ -104,8 +102,8 @@ class App extends Component {
             {
               this.state.wishes.map((wish) =>
                 <div key={wish.id}>
-                  <h2> {wish.item} </h2>
-                  <h2> {wish.link} </h2>
+                  <h2> Wish item: {wish.item} </h2>
+                  <h2> Wish link: <a href={wish.link}>{wish.link} </a></h2>
                   <img src={wish.image} alt="Testing" />
                 </div>
               )
