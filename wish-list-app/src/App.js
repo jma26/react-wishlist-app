@@ -4,6 +4,7 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
+    this.id = 1;
     this.state = {
       wishes: [],
       item: '',
@@ -27,9 +28,7 @@ class App extends Component {
         })
       }
       // Map through the array and run it through reader
-      imageFiles.map((imageFile) => {
-        reader.readAsDataURL(imageFile);
-      })
+      imageFiles.map((imageFile) => reader.readAsDataURL(imageFile));
     }
   }
 
@@ -43,6 +42,7 @@ class App extends Component {
     formData.append('image', this.state.image);
     
     let wish = {
+      id: this.id++,
       item: this.state.item,
       link: this.state.link,
       image: this.state.image
@@ -101,10 +101,13 @@ class App extends Component {
             <input type="submit" value="Submit" />
           </form>
           <div className="list">
-          <img src={this.state.image} alt="Testing" />
             {
               this.state.wishes.map((wish) =>
-                <img src={wish.image} alt="Testing" />
+                <div key={wish.id}>
+                  <h2> {wish.item} </h2>
+                  <h2> {wish.link} </h2>
+                  <img src={wish.image} alt="Testing" />
+                </div>
               )
             }
           </div>
