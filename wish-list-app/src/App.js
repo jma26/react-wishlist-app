@@ -34,27 +34,37 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    
-    let formData = new FormData();
-    formData.append('item', this.state.item);
-    formData.append('link', this.state.link);
-    formData.append('image', this.state.image);
-    
-    let wish = {
-      id: this.id++,
-      item: this.state.item,
-      link: this.state.link,
-      image: this.state.image
+    if (this.state.item === '' || this.state.link === '') {
+      event.preventDefault();
+      alert('Empty input fields not allowed!');
+      this.setState({
+        item: '',
+        link: '',
+        image: null
+      });
+      event.target.reset();
+    } else {
+      event.preventDefault();
+      let formData = new FormData();
+      formData.append('item', this.state.item);
+      formData.append('link', this.state.link);
+      formData.append('image', this.state.image);
+      
+      let wish = {
+        id: this.id++,
+        item: this.state.item,
+        link: this.state.link,
+        image: this.state.image
+      }
+  
+      this.setState({
+        wishes: [...this.state.wishes, wish],
+        item: '',
+        link: '',
+        image: null
+      });
+      event.target.reset();
     }
-
-    this.setState({
-      wishes: [...this.state.wishes, wish],
-      item: '',
-      link: '',
-      image: null
-    });
-    event.target.reset();
   }
 
   handleChange(field, event) {
