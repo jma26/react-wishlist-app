@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Image from './Image';
 import './App.css';
 
 class App extends Component {
@@ -76,6 +77,12 @@ class App extends Component {
     }
   }
 
+  isImageAvailable(wish) {
+    if (wish.image) {
+      return <img src={wish.image} alt={wish.item} />
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -104,7 +111,7 @@ class App extends Component {
                 <div key={wish.id}>
                   <h2> Wish item: {wish.item} </h2>
                   <h2> Wish link: <a href={wish.link}>{wish.link} </a></h2>
-                  <img src={wish.image} alt="Testing" />
+                  <Image image={wish.image} alt={wish.item} />
                 </div>
               )
             }
