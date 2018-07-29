@@ -79,10 +79,34 @@ img {
 }
 
 .wish {
-  border: 2px solid green;
+  background-color: #00796B;
+  border: 2px solid #FFC107;
+  box-shadow: 0 6px 16px 4px rgba(0,0,0,0.2);
+  color: #FFC107;
   display: inline-block;
   margin-bottom: 24px;
+  padding: 8px;
   min-width: 30%;
   text-align: center;
+  transition-duration: 1.0s;
+}
+
+.wish:hover {
+  box-shadow: 0px 12px 16px 8px rgba(0,0,0,0.2);
+  transform: scale(1.1);
+  transition-duration: 1.0s;
+}
+
+.wish img {
+  box-shadow: 0 0px 16px 6px rgba(0,0,0,0.2);
+  margin: 16px 0px 16px 0px;
+}
+
+.wish a {
+  color: #FFF;
+}
+
+.wish a:hover {
+  color: #FFC107;
 }
 
