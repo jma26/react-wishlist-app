@@ -11,7 +11,26 @@ class App extends Component {
       image: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fileReader = new FileReader();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Only run if the previous state of 'wishes' is not the same as current state
+    if (prevState.wishes !== this.state.wishes) {
+      let wishes = this.state.wishes;
+      let reader = new FileReader();
+      // Initialize empty array
+      let imageFiles = [];
+      reader.onloadend = () => {
+        wishes.forEach((wish) => {
+          // Push each image into array
+          imageFiles.push(wish.image);
+        })
+      }
+      // Map through the array and run it through reader
+      imageFiles.map((imageFile) => {
+        reader.readAsDataURL(imageFile);
+      })
+    }
   }
 
   handleSubmit(event) {
@@ -49,7 +68,7 @@ class App extends Component {
     console.log(files);
     if (files) {
       let imageFile = files[0];
-      const reader = new FileReader();
+      let reader = new FileReader();
       reader.onloadend = () => {
         this.setState({
           image: reader.result,
@@ -82,7 +101,12 @@ class App extends Component {
             <input type="submit" value="Submit" />
           </form>
           <div className="list">
-            <img src={this.state.image} alt="Testing" />
+          <img src={this.state.image} alt="Testing" />
+            {
+              this.state.wishes.map((wish) =>
+                <img src={wish.image} alt="Testing" />
+              )
+            }
           </div>
         </div>
       </div>
