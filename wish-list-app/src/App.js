@@ -103,7 +103,7 @@ class App extends Component {
           <form onSubmit={this.handleSubmit} className="wishform">
             <fieldset className="wish-field">
               <label htmlFor="wish" /> Wish item
-              <input type="text" id="wish" onChange={(event) => this.handleChange("item", event)} />
+              <input type="text" maxLength="30" id="wish" onChange={(event) => this.handleChange("item", event)} />
             </fieldset>
             <fieldset className="link-field">
               <label htmlFor="link" /> Link
@@ -119,8 +119,8 @@ class App extends Component {
             {
               this.state.wishes.map((wish) =>
                 <div className="wish" key={wish.id}>
-                  <h2> Wish item: {wish.item} </h2>
-                  <h2> Wish link: <a href={wish.link}>{wish.link} </a></h2>
+                  <h2> {wish.item} </h2>
+                  <h2> <a href={wish.link}>{wish.link} </a></h2>
                   <Image image={wish.image} alt={wish.item} />
                 </div>
               )
