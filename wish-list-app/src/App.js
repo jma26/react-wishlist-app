@@ -118,7 +118,7 @@ class App extends Component {
           <div className="list">
             {
               this.state.wishes.map((wish) =>
-                <div key={wish.id}>
+                <div className="wish" key={wish.id}>
                   <h2> Wish item: {wish.item} </h2>
                   <h2> Wish link: <a href={wish.link}>{wish.link} </a></h2>
                   <Image image={wish.image} alt={wish.item} />
