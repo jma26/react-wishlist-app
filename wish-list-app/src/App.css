@@ -27,6 +27,7 @@ form {
   display: inline-block;
   margin: 24px 0px 0px 24px;
   padding: 16px;
+  vertical-align: top;
 }
 
 fieldset {
@@ -61,7 +62,17 @@ input[type="submit"]:hover {
 }
 
 img {
-  width: 20%;
-  height: 20%;
+  max-width: 250px;
+  max-height: 200px;
+}
+
+.list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 2px solid red;
+  margin: 24px 0px 0px 24px;
+  padding: 16px;
+  width: 75vw;
 }
 
