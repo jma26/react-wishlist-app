@@ -67,9 +67,9 @@ class App extends Component {
     }
   }
 
-  handleChange(field, event) {
+  handleChange(event) {
     this.setState({
-      [field]: event.target.value
+      [event.target.name]: event.target.value
     });
   }
 
@@ -103,11 +103,11 @@ class App extends Component {
           <form onSubmit={this.handleSubmit} className="wishform">
             <fieldset className="wish-field">
               <label htmlFor="wish" /> Wish item
-              <input type="text" maxLength="30" id="wish" value={this.state.item} onChange={(event) => this.handleChange("item", event)} />
+              <input type="text" maxLength="30" id="wish" name="item" value={this.state.item} onChange={(event) => this.handleChange(event)} />
             </fieldset>
             <fieldset className="link-field">
               <label htmlFor="link" /> Link
-              <input type="text" id="link" value={this.state.value} onChange={(event) => this.handleChange("link", event)} />
+              <input type="text" id="link" name="link" value={this.state.value} onChange={(event) => this.handleChange(event)} />
             </fieldset>
             <fieldset className="image-field">
               <label type="image-upload" /> Image
