@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Image from './Image';
 import './App.css';
 
 import Header from './Header';
+import List from './List';
 
 class App extends Component {
   constructor() {
@@ -107,7 +107,7 @@ class App extends Component {
             </fieldset>
             <fieldset className="link-field">
               <label htmlFor="link" /> Link
-              <input type="text" id="link" name="link" value={this.state.value} onChange={(event) => this.handleChange(event)} />
+              <input type="text" id="link" name="link" value={this.state.link} onChange={(event) => this.handleChange(event)} />
             </fieldset>
             <fieldset className="image-field">
               <label type="image-upload" /> Image
@@ -115,17 +115,7 @@ class App extends Component {
             </fieldset>
             <input type="submit" value="Submit" />
           </form>
-          <div className="list">
-            {
-              this.state.wishes.map((wish) =>
-                <div className="wish" key={wish.id}>
-                  <h2> {wish.item} </h2>
-                  <h2> <a href={wish.link}>{wish.link} </a></h2>
-                  <Image image={wish.image} alt={wish.item} />
-                </div>
-              )
-            }
-          </div>
+          <List wishes={this.state.wishes} />
         </div>
       </div>
     );
