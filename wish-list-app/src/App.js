@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Image from './Image';
 import './App.css';
 
+import Header from './Header';
+
 class App extends Component {
   constructor() {
     super();
@@ -96,9 +98,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1 className="title"> wish<span>Li</span>st </h1>
-        </header>
+        <Header />
         <div className="main">
           <form onSubmit={this.handleSubmit} className="wishform">
             <fieldset className="wish-field">
