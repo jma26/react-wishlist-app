@@ -89,12 +89,6 @@ class App extends Component {
     }
   }
 
-  isImageAvailable(wish) {
-    if (wish.image) {
-      return <img src={wish.image} alt={wish.item} />
-    }
-  }
-
   render() {
     return (
       <div className="App">
