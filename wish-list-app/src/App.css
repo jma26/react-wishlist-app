@@ -1,6 +1,11 @@
 * {
+  box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 #root {
@@ -15,7 +20,7 @@
 
 header {
   background-color: #00796B;
-  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   text-align: center;
 }
 
@@ -71,11 +76,11 @@ img {
 }
 
 .list {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 24px 0px 0px 24px;
-  width: 75vw;
+  width: inherit;
 }
 
 .wish {
@@ -84,7 +89,7 @@ img {
   box-shadow: 0 6px 16px 4px rgba(0,0,0,0.2);
   color: #FFC107;
   display: inline-block;
-  margin-bottom: 24px;
+  margin: 0px 8px 24px 8px;
   padding: 8px;
   min-width: 30%;
   text-align: center;
